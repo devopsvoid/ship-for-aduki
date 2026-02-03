@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message for You</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff0f3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 90%;
+        }
+
+        .visual {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        h1 { color: #ff4d6d; font-size: 24px; }
+        p { color: #555; line-height: 1.6; font-size: 18px; }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary { background-color: #ff4d6d; color: white; }
+        .btn-secondary { background-color: #adb5bd; color: white; }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="step1">
+            <div class="visual">🐻😍</div>
+            <h1>My sexy mama aduki, will you be my Valentine?</h1>
+            <div class="btn-container">
+                <button class="btn-primary" onclick="nextStep(2)">Yes</button>
+                <button id="noBtn" class="btn-secondary" onmouseover="trickButton()">No</button>
+            </div>
+        </div>
+
+        <div id="step2" class="hidden">
+            <div class="visual">🥺</div>
+            <h1>Promise you won't change your mind later baby?</h1>
+            <div class="btn-container">
+                <button class="btn-primary" onclick="nextStep(3)">Yes, I promise</button>
+                <button class="btn-secondary" onclick="nextStep(3)">No I don't promise</button>
+            </div>
+        </div>
+
+        <div id="step3" class="hidden">
+            <div class="visual">🎁❤️</div>
+            <p>Thank you for saying yes to being my Valentine, it means more than words can truly express. I’ve been looking forward to this moment, and knowing that you’re choosing to spend this special day with me fills my heart with warmth and joy. Your acceptance isn’t just a date; it’s a beautiful reminder of how lucky I am to have you in my life.</p>
+        </div>
+    </div>
+
+    <script>
+        function trickButton() {
+            const noBtn = document.getElementById('noBtn');
+            noBtn.innerText = "Yes";
+            noBtn.style.backgroundColor = "#ff4d6d";
+            // After she tries to click 'No', it becomes a 'Yes' button
+            noBtn.onclick = function() { nextStep(2); };
+        }
+
+        function nextStep(stepNumber) {
+            // Hide all steps
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+
+            // Show current step
+            document.getElementById('step' + stepNumber).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
